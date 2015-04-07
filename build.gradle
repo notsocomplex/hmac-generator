@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+group = 'com.notsocomplex'
+version = '0.1'
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.3'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+  	compile 'org.apache.commons:commons-lang3:3.+'
+  	compile 'org.bouncycastle:bcprov-jdk15on:1.+'
+	testCompile 'junit:junit:4.+'
+}
+
+task createPom << {
+    pom {
+    }.writeTo("pom.xml")
+}
